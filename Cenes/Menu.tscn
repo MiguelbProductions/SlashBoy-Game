@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/GUI/Fonts/Montserrat-ExtraBold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/GUI/Logo/Logo_4.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player and Enemies/Player/Full body animated characters/Char 3/with hands/idle_0.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player and Enemies/Player/Full body animated characters/Char 4/with hands/idle_0.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player and Enemies/Player/Full body animated characters/Char 1/with hands/idle_0.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/MenuButtons.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Assets/GUI/Fonts/Montserrat-ExtraBold.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 17
+font_data = SubResource( 2 )
+
+[node name="Menu" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.14902, 0.196078, 0.219608, 1 )
+
+[node name="Logo" type="TextureRect" parent="."]
+margin_left = -89.0
+margin_top = 36.0
+margin_right = 1311.0
+margin_bottom = 236.0
+rect_scale = Vector2( 1.1, 1.1 )
+rect_pivot_offset = Vector2( 550, 0 )
+texture = ExtResource( 2 )
+
+[node name="P1" type="TextureRect" parent="."]
+margin_left = -65.0
+margin_top = -322.0
+margin_right = 1983.0
+margin_bottom = 1726.0
+rect_scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="P2" type="TextureRect" parent="."]
+margin_left = 235.0
+margin_top = -322.0
+margin_right = 2283.0
+margin_bottom = 1726.0
+rect_scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="P3" type="TextureRect" parent="."]
+margin_left = 535.0
+margin_top = -322.0
+margin_right = 2583.0
+margin_bottom = 1726.0
+rect_scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 5 )
+flip_h = true
+
+[node name="Start" type="Button" parent="."]
+margin_left = 35.0
+margin_top = 371.0
+margin_right = 205.0
+margin_bottom = 426.0
+rect_pivot_offset = Vector2( 133, 0 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+flat = true
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Start"]
+margin_left = 5.0
+margin_top = -12.0
+margin_right = 267.0
+margin_bottom = 111.0
+custom_colors/font_color_shadow = Color( 0, 0.407843, 0.933333, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+
+[node name="Options" type="Button" parent="."]
+margin_left = 35.0
+margin_top = 449.0
+margin_right = 300.0
+margin_bottom = 504.0
+rect_pivot_offset = Vector2( 133, 0 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+flat = true
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Options"]
+margin_left = 5.0
+margin_top = -12.0
+margin_right = 267.0
+margin_bottom = 111.0
+custom_colors/font_color_shadow = Color( 0, 0.407843, 0.933333, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 1 )
+text = "Options"
+
+[node name="Conquest" type="Button" parent="."]
+margin_left = 35.0
+margin_top = 527.0
+margin_right = 355.0
+margin_bottom = 582.0
+rect_pivot_offset = Vector2( 133, 0 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+flat = true
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Conquest"]
+margin_left = 5.0
+margin_top = -12.0
+margin_right = 314.0
+margin_bottom = 111.0
+custom_colors/font_color_shadow = Color( 0, 0.407843, 0.933333, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 1 )
+text = "Conquest"
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 35.0
+margin_top = 605.0
+margin_right = 185.0
+margin_bottom = 660.0
+rect_pivot_offset = Vector2( 133, 0 )
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+enabled_focus_mode = 0
+flat = true
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Quit"]
+margin_left = 5.0
+margin_top = -12.0
+margin_right = 314.0
+margin_bottom = 111.0
+custom_colors/font_color_shadow = Color( 0, 0.407843, 0.933333, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 1 )
+text = "Quit"
+
+[node name="Credits" type="Label" parent="."]
+margin_left = 1090.0
+margin_top = 664.0
+margin_right = 1272.0
+margin_bottom = 711.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 3
+custom_fonts/font = SubResource( 3 )
+text = "Version 1.0
+Created by GGames"
+align = 2

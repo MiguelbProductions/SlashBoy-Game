@@ -1,0 +1,136 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemies Death Animation/death_2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/idle_2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/walk_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/walk_5.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/idle_4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/walk_3.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/walk_4.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemies Death Animation/death_3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/idle_1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/walk_6.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/walk_1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemies Death Animation/death_0.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemies Death Animation/death_1.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/idle_0.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/idle_3.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/idle_5.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/walk_0.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Enemies Animations/Enemy 1/walk_7.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Player and Enemies/Enemies/Red Cross/Red Cross.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/Demon.gd" type="Script" id=28]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 2 ), ExtResource( 15 ), ExtResource( 5 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 11 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 1 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "Death",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 19 ) ],
+"loop": true,
+"name": "Spawn",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 100.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 170.0
+height = 200.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "Fade In"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Demon_Animation:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 2, 2 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Fade Out"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Demon_Animation:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Demon_Animation:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.08, 0.08 ) ]
+}
+
+[node name="Demon" type="KinematicBody2D" groups=["Enemie"]]
+collision_layer = 2
+collision_mask = 10
+script = ExtResource( 28 )
+
+[node name="Demon_Animation" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 48 )
+scale = Vector2( 0.08, 0.08 )
+frames = SubResource( 1 )
+animation = "Spawn"
+
+[node name="Demon_Colision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 50 )
+scale = Vector2( 0.08, 0.08 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Collision_Area" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 9
+
+[node name="AreaofDetection" type="CollisionShape2D" parent="Collision_Area"]
+position = Vector2( 0, 40 )
+scale = Vector2( 0.08, 0.08 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Attack_Timer" type="Timer" parent="."]
+
+[node name="Demon_FadeInOut" type="AnimationPlayer" parent="."]
+"anims/Fade In" = SubResource( 4 )
+"anims/Fade Out" = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[connection signal="body_entered" from="Collision_Area" to="." method="_on_Collision_Area_body_entered"]
+[connection signal="body_exited" from="Collision_Area" to="." method="_on_Collision_Area_body_exited"]
+[connection signal="timeout" from="Attack_Timer" to="." method="_on_Attack_Timer_timeout"]
